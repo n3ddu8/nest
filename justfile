@@ -20,6 +20,11 @@ build-environment:
   git clone https://github.com/n3ddu8/nvim-config.git $HOME/.config/nvim
   fi
 
+  if [ ! -d "$HOME/.tmux.conf" ]; then \
+  git clone https://github.com/n3ddu8/tmux-config.git $HOME
+  cp $HOME/tmux-config/tmux.conf $HOME/.tmux.conf
+  rm -rf $HOME/tmux-config
+
   # need to populate the GH_TOKEN environment variable with a GitHub API authentication token w/o including the token in a repo?!
   # gh extension install https://github.com/nektos/gh-act
 
