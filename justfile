@@ -7,14 +7,23 @@ build-environment:
     neovim \
     github-cli
 
+  chsh -s /bin/zsh
+
   if [ ! -l "/etc/localtime" ]; then \
   ln -s /usr/share/zoneinfo/Europe/London /etc/localtime; \
   fi
   
   if [ ! -d "$HOME/.oh-my-zsh" ]; then \
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"; \
-  chsh -s /bin/zsh
+  git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/themes/powerlevel10k
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
   fi
+
+  # WARNING: this will overwrite any existing zshrc file
+  git clone https://github.com/n3ddu8/zsh-config.git $HOME
+  cp $HOME/zsh-config/zshrc $HOME/.zshrc
+  rm -rf $HOME/zsh-config
 
   if [ ! -d "$HOME/.config/nvim" ]; then \
   git clone https://github.com/n3ddu8/nvim-config.git $HOME/.config/nvim
