@@ -16,5 +16,10 @@ build-environment:
   chsh -s /bin/zsh
   fi
 
+  if [ ! -d "$HOME/.config/nvim" ]; then \
+  git clone https://github.com/n3ddu8/nvim-config.git $HOME/.config/nvim
+  fi
+
   # need to populate the GH_TOKEN environment variable with a GitHub API authentication token w/o including the token in a repo?!
   # gh extension install https://github.com/nektos/gh-act
+
