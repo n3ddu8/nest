@@ -5,6 +5,7 @@ build-environment:
     zsh \
     tmux \
     neovim \
+    npm \
     github-cli
 
   chsh -s /bin/zsh
