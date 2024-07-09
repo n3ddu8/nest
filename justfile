@@ -8,7 +8,11 @@ build-environment:
     npm \
     github-cli
 
-  chsh -s /bin/zsh
+  usermod -s /bin/zsh $USER
+
+  curl -L -o devpod "https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64" && \
+      sudo install -c -m 0755 devpod /usr/local/bin && \
+      rm -f devpod
 
   if [ ! -l "/etc/localtime" ]; then \
   ln -s /usr/share/zoneinfo/Europe/London /etc/localtime; \
