@@ -165,9 +165,7 @@ just .
   * [Download VSCode](https://code.visualstudio.com/download)
   * Install using your local 
  
-#### devpod-cli
-
-##### Installation
+#### devpod-cli setup
 
 Add Docker as a provider:
 ```sh
@@ -183,7 +181,28 @@ replacing `<ide>` with one of:
 * openvscode (to launch in a browser)
 * none
 
-##### Usage
+#### DevPod (GUI) setup
+
+Click on `Providers`, `+ Add` and choose `Docker`:
+
+<div align="left">
+  <img src="images/add-provider.png" alt="Add Provider">
+</div>
+</br>
+
+* Click on `Workspaces`, `+ Create`
+* In the `Git Repo` box enter `github.com/n3ddu8/nest`
+* Choose a `Default IDE` or leave as `None`
+* Click `Create Workspace`
+
+<div align="left">
+  <img src="images/create-workspace.png" alt="Create Workspace">
+</div>
+</br>
+
+##### Installation
+
+#### Usage
 
 If using `--ide vscode` VS Code should now launch, similarly using `--ide openvscode` your browser should launch. As a NeoVim user neither of these options have been tested, but there shouldn't be any reason they don't work.
 
