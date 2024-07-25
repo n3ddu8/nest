@@ -36,7 +36,7 @@
 <h3 align="center">nest</h3>
 
   <p align="center">
-    Instruction set for building a custom development environment on top of Alpine Linux.
+    My Alpine based custom development environment.
     <br />
     <br />
     <a href="https://github.com/n3ddu8/nest/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
@@ -54,17 +54,17 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#why-alpine">Why Alpine</a></li>
         <li><a href="#built-with">Built With</a></li>
+        <li><a href="#packages">Packages</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#using-just">Using Just</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -76,42 +76,121 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-...
+Nest is my custom development environment, built on top of [Alpine Base](alpine-base), containing the tools I use regularly in my work as a Data Engineer or when working on my own open-source projects.
+
+It's designed to be used in a variety of ways:
+* In a new environment, using the Just command runner and the included `.justfile`.
+* Using DevPod or Codespaces, by pointing at this repo.
+* ~As the upstream for a new container, using the published package.~ *coming soon*
+
+### Why Alpine
+
+Alpine is a minimalist distribution, the official Docker image is just 5MB in size making it the perfect base to build upon.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
 * [Just](https://just.systems/)
+* [Docker](https://www.docker.com/)
+* [Devcontainer](https://code.visualstudio.com/docs/devcontainers/create-dev-container)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Packages
+
+#### Upstream
+
+The [Alpine Base](alpine-base) image contains some basic tooling:
+* curl
+* Python3
+* Pip for Python3
+* Microsoft ODBC driver 17 for working with SQL Server
+* Misc packages required to work with:
+    * Sqlite
+    * MySQL
+    * MariaDB
+    * PostgreSQL
+ 
+#### Additions
+
+Additional packages added are:
+* github-cli
+* neovim
+* npm
+* tmux
+* zsh
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-### Prerequisites
+### Using Just
+
+The `.justfile` works in an Alpine Linux environment only.
+
+#### Prerequisites
 
 * just
-  * [just installation instructions](https://just.systems/man/en/chapter_2.html)
+  * `apk add just`
+* wget
+  * `apk add wget`
 
-### Installation
+#### Installation
 
 ```sh
-sudo just update
+wget https://raw.githubusercontent.com/n3ddu8/nest/main/.justfile
+```
+
+#### Usage
+
+```sh
+just .
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Using DevPod
 
+#### Prerequisites
 
-<!-- USAGE EXAMPLES -->
-## Usage
+* Docker
+  * [Docker Installation Instructions](https://docs.docker.com/engine/install/)
+* DevPod
+  * [DevPod Installation Instructions](https://devpod.sh/docs/getting-started/install)
+* VSCode (optional)
+  * [Download VSCode](https://code.visualstudio.com/download)
+  * Install using your local 
+ 
+#### devpod-cli
 
-...
+##### Installation
+
+Add Docker as a provider:
+```sh
+devpod provider add docker
+```
+
+Run the following:
+```sh
+devpod up github.com/n3ddu8/nest --ide <ide>
+```
+replacing `<ide>` with one of:
+* vscode
+* openvscode (to launch in a browser)
+* none
+
+##### Usage
+
+If using `--ide vscode` VS Code should now launch, similarly using `--ide openvscode` your browser should launch. As a NeoVim user neither of these options have been tested, but there shouldn't be any reason they don't work.
+
+If using `--ide none`, you can access the container by running:
+```sh
+ssh nest.devpod
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -121,6 +200,8 @@ sudo just update
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+That being said, this is my personalised development environment, and what works best for me will always being the primary factor in the decision to merge any changes.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -165,3 +246,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-url]: https://github.com/n3ddu8/nest/issues
 [license-shield]: https://img.shields.io/github/license/n3ddu8/nest.svg?style=for-the-badge
 [license-url]: https://github.com/n3ddu8/nest/blob/master/LICENSE.txt
+[alpine-base]: https://github.com/n3ddu8/alpine-base
