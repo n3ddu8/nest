@@ -119,6 +119,7 @@ Additional packages added are:
 * github-cli
 * neovim
 * npm
+* openssh
 * tmux
 * zsh
 

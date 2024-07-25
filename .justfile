@@ -5,6 +5,7 @@ build-environment:
     github-cli \
     neovim \
     npm \
+    openssh \
     shadow \
     tmux \
     zsh
@@ -26,4 +27,6 @@ build-environment:
 
   # WARNING: this will overwrite any existing nvim config
   git clone https://github.com/n3ddu8/nvim-config.git $HOME/.config/nvim
+
+  git config --global core.editor nvim
 
